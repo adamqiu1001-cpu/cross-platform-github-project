@@ -24,9 +24,9 @@ Commit and push completed work so every machine can fetch the same source. Use b
 
 ## 本项目在 Windows / macOS 上使用
 
-仓库：`adamqiu1001-cpu/cross-platform-github-project`，可见性：私有。
+仓库：`adamqiu1001-cpu/cross-platform-github-project`，可见性：公开。
 
-每台电脑各自克隆仓库，使用具有仓库访问权限的 GitHub 账号登录：
+每台电脑各自克隆仓库。下载公开源码无需登录；推送修改仍需使用具有写入权限的 GitHub 账号认证：
 
 ```sh
 git clone https://github.com/adamqiu1001-cpu/cross-platform-github-project.git
@@ -43,7 +43,7 @@ python scripts/skill.py check
 python scripts/skill.py package
 ```
 
-生成的 `dist/cross-platform-github-project.zip` 只包含 Skill 源码，不提交到 Git。ZIP 可以在 Windows 和 macOS 通用；GitHub Actions 分别在这两种系统上检查、打包，并保留构建产物。私有仓库的 CI 使用量计入账号对应的 Actions 额度。
+生成的 `dist/cross-platform-github-project.zip` 只包含 Skill 源码，不提交到 Git。ZIP 可以在 Windows 和 macOS 通用；GitHub Actions 分别在这两种系统上检查、打包，并保留构建产物。
 
 工作开始前检查 `git status`；有未提交修改时先提交到当前分支，再同步远端。普通同步使用 `git pull --ff-only`，如果分支已分叉，检查双方提交后再选择合并或变基。不要用强制推送、硬重置覆盖另一台电脑上的修改。
 
