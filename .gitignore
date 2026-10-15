@@ -1,0 +1,31 @@
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor and temporary files
+.idea/
+.vscode/
+*.swp
+*.tmp
+*.bak
+__pycache__/
+*.pyc
+.venv/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Build and package output
+dist/
+build/
+out/
+*.dmg
+*.pkg
+*.msi
+*.exe
+
+# Local Codex state (keep project skills under .agents/skills tracked)
+.codex/

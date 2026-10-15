@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cross Platform GitHub Project"
+  short_description: "Initialize shared GitHub source and dual-platform builds"
+  default_prompt: "Initialize this project with GitHub source sharing and Windows/macOS builds"

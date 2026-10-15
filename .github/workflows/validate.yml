@@ -1,0 +1,30 @@
+name: Validate and package Skill
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  skill:
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - name: Validate Skill
+        run: python scripts/skill.py check
+      - name: Package Skill
+        run: python scripts/skill.py package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skill-${{ matrix.os }}
+          path: dist/*.zip
+          if-no-files-found: error
