@@ -9,7 +9,11 @@ ROOT = Path(__file__).resolve().parents[1]
 NAME = "cross-platform-github-project"
 SKILL = ROOT / ".agents" / "skills" / NAME
 # Explicit inventory keeps credentials, Git metadata and local caches out of ZIPs.
-FILES = (Path("SKILL.md"), Path("agents/openai.yaml"))
+FILES = (
+    Path("SKILL.md"),
+    Path("references/troubleshooting.md"),
+    Path("agents/openai.yaml"),
+)
 
 
 def check():

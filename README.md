@@ -5,6 +5,7 @@ Codex skill source for initializing projects with a shared GitHub repository, co
 ## Contents
 
 - `.agents/skills/cross-platform-github-project/SKILL.md` — reusable workflow instructions.
+- `.agents/skills/cross-platform-github-project/references/troubleshooting.md` — fixes for clone, push, proxy, and token errors; the skill reads it only when one of these fails.
 - `.agents/skills/cross-platform-github-project/agents/openai.yaml` — Codex interface metadata.
 
 ## Use on another computer
