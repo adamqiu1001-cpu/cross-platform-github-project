@@ -16,6 +16,15 @@ Clone this repository, then copy `.agents/skills/cross-platform-github-project` 
 
 Alternatively, open this repository as a Codex workspace and invoke the skill from the project-local `.agents/skills` location.
 
+### Claude
+
+The same `SKILL.md` works in Claude without changes (`agents/openai.yaml` is Codex-only and is ignored).
+
+- Claude Code (terminal or the desktop Code tab): copy the skill folder to `~/.claude/skills/cross-platform-github-project` on macOS, or `%USERPROFILE%\.claude\skills\cross-platform-github-project` on Windows. To scope it to one project, use that project's `.claude/skills/` instead.
+- Claude desktop Cowork: skills are stored on the Claude account, not on disk. Upload `dist/cross-platform-github-project.zip` under Customize → Skills, or ask Claude in Cowork to install it from this repository.
+
+Skills installed for Claude Code and for Cowork are configured separately; install in both if both are used.
+
 ## Cross-platform collaboration
 
 Keep skill and project source in Git; do not commit credentials, machine-specific settings, dependencies, generated installers, or build output. Use LF line endings for portable text files. For ordinary project repositories, commit the ecosystem's dependency lockfile and runtime version file, and build Windows and macOS installers on their respective operating systems.
