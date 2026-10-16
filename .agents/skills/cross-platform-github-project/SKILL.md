@@ -19,7 +19,7 @@ Set up a new project so GitHub is the shared source of truth and each operating 
 
 ## Cross-machine operating rules
 
-- Each computer clones the same remote repository and runs `git pull --rebase` before starting work.
+- Each computer clones the same remote repository. Before starting work, commit local changes, then run `git pull --ff-only`. If the pull stops because the branches have diverged, inspect both sides and choose merge or rebase deliberately. New projects should set `git config --local pull.ff only` so this is the default.
 - Feature work goes on branches; shared work lands through pull requests. Keep `main` buildable.
 - Do not synchronize `node_modules`, virtual environments, IDE metadata, build output, or secrets through Git.
 - Resolve dependency and runtime differences through committed lockfiles and version-manager files rather than copying local directories.
