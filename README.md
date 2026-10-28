@@ -5,7 +5,7 @@ Codex skill source for initializing projects with a shared GitHub repository, co
 ## Contents
 
 - `.agents/skills/cross-platform-github-project/SKILL.md` — reusable workflow instructions.
-- `.agents/skills/cross-platform-github-project/references/troubleshooting.md` — fixes for clone, push, proxy, and token errors; the skill reads it only when one of these fails.
+- `.agents/skills/cross-platform-github-project/references/troubleshooting.md` — official CLI installation/login, direct uploads, and fixes for proxy, permissions and divergent upload history.
 - `.agents/skills/cross-platform-github-project/agents/openai.yaml` — Codex interface metadata.
 
 ## Use on another computer
@@ -65,3 +65,13 @@ git config --local core.quotepath false
 ```
 
 GitHub 插件连接和本机 Git 身份验证是两套独立配置；首次克隆或推送可能需要在 GitHub 的正常登录流程中完成认证。
+
+## 直接上传，无需 Chrome 逐个上传文件
+
+技能优先使用 Git 直接推送，配合 GitHub 官方 CLI（`gh`）登录和管理 Pull Request。首次登录可能需要在浏览器完成一次设备码、邮箱或双重验证；之后可直接对 Codex 说：“把本次修改上传到 GitHub，并更新现有 Pull Request。”每台电脑分别登录，凭据不随技能包分发。
+
+- Mac 有 Homebrew：`brew install gh`；没有 Homebrew：从 [官方 Releases](https://github.com/cli/cli/releases/latest) 下载对应芯片的 ZIP，校验后解压，通过完整路径运行 `bin/gh`。不必为了上传安装 Python。
+- Windows：`winget install --id GitHub.cli --exact`，并确认 Git 已安装。
+- 登录：`gh auth login --hostname github.com --git-protocol https --web`。完成网页验证后，用 `gh auth status` 核对账号及安全存储，再用 `gh auth setup-git --hostname github.com` 配置 Git 的登录方式；多账号环境先检查已有凭据配置。
+
+连接器可读但写入报 403 时，技能会检查本机 CLI 权限；不会直接转为 Chrome 上传，也不会先清空旧凭据。上传后会核对远端提交和 Pull Request；遇到本地与网页提交历史不同，会保留原分支并比较差异，避免覆盖之前的工作。
